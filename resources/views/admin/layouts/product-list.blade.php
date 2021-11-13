@@ -3,6 +3,21 @@
 
 @section('content')
 
+{{--Message section in blade file--}}
+
+    @if(session('success'))
+        <div class="alert alert-success">
+            {!! session('success') !!}
+        </div>
+    @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {!! session('error') !!}
+        </div>
+    @endif
+
+
 <h1>Product list</h1>
 <a href="{{route('admin.products.create')}}" class="btn btn-success">Create new product</a>
 
