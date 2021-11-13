@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -17,6 +18,20 @@ class ProductController extends Controller
     {
         return view('admin.layouts.product-create');
 
+    }
+
+    public function productStore(Request $request)
+    {
+        try {
+           Product::create([
+               'name' => $request->input('name'),
+               'price' => $request->input('price'),
+               'description' => $request->input('description'),
+           ]);
+           return redirect()->route('admin.products')->with('success', 'Product created successfully');
+        }catch (\Throwable $throwable){
+            return redirect()->back();
+        }
     }
 
 
