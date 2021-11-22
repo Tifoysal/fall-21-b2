@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -28,4 +29,10 @@ Route::group(['prefix'=>'admin-portal'],function(){
     Route::get('/products',[ProductController::class,'productList'])->name('admin.products');
     Route::get('/products/create',[ProductController::class,'productCreate'])->name('admin.products.create');
     Route::post('/products/store',[ProductController::class,'productStore'])->name('admin.products.store');
+
+    // Category
+
+    Route::get('/category/list',[CategoryController::class,'list'])->name('category.list');
+    Route::get('/category/form',[CategoryController::class,'form'])->name('category.form');
+    Route::post('/category/add',[CategoryController::class,'add'])->name('category.add');
 });

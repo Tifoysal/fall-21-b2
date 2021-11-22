@@ -25,29 +25,25 @@
     <thead>
     <tr>
         <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">name</th>
+        <th scope="col">description</th>
+        <th scope="col">category</th>
+        <th scope="col">price</th>
+        <th scope="col">status</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-    </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-    </tr>
+        @foreach ($products as $key=>$product)
+            <tr>
+                <th>{{$key+1}}</th>
+                <td>{{$product->name}}</td>
+                <td>{{$product->description}}</td>
+                <td>{{$product->category->name}}</td>
+                <td>{{$product->price}}</td>
+                <td>{{$product->status}}</td>
+            </tr>
+        @endforeach
+   
     </tbody>
 </table>
 @endsection
