@@ -26,6 +26,7 @@
     <tr>
         <th scope="col">#</th>
         <th scope="col">name</th>
+        <th>Image</th>
         <th scope="col">description</th>
         <th scope="col">category</th>
         <th scope="col">price</th>
@@ -37,6 +38,9 @@
             <tr>
                 <th>{{$key+1}}</th>
                 <td>{{$product->name}}</td>
+                <td>
+                    <img src="{{url('/uploads/'.$product->image)}}" width="100px" alt="product image">
+                </td>
                 <td>{{$product->description}}</td>
                 <td>{{$product->category->name}}</td>
                 <td>{{$product->price}}</td>

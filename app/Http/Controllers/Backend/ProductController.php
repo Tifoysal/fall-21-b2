@@ -26,12 +26,24 @@ class ProductController extends Controller
 
     public function productStore(Request $request)
     {
+        // dd(date('Ymdhms'));
+        // dd($request->all());
         try {
+
+            if ($request->hasFile('image')) {
+                $file = $request->file('image');
+                $filename= date('Ymdhms').'.'.$file->getClientOriginalExtension();
+                $file-> storeAs('/uploads',$filename);
+                
+            }
+
+            // dd("ok");
            Product::create([
                'name' => $request->input('name'),
                'price' => $request->input('price'),
                'description' => $request->input('description'),
-               'category_id'=>$request->category
+               'category_id'=>$request->category,
+               'image'=>$filename
            ]);
            return redirect()->route('admin.products')->with('success', 'Product created successfully');
         }catch (\Throwable $throwable){
